@@ -41,3 +41,4 @@ $config->set('db', $newDbConfig);
 $newDbConfig = $config->get('db');
 echo PHP_EOL . "Updated DB Configuration:" . PHP_EOL;
 print_r($newDbConfig);
+displayHorizontalLine();
