@@ -15,7 +15,6 @@ class UserMusicBandTest extends TestCase
         $michelle = new User('Michelle Ectron');
         $yves = new User('Yves Haigé');
 
-
         $band = new MusicBand('Daft PHPunk');
 
         $band->attach($albert);
@@ -24,11 +23,12 @@ class UserMusicBandTest extends TestCase
 
         $band->detach($yves);
 
-        $band->addNewConcertDate('19/11/2027.', 'Bercy');
+        $band->addNewConcertDate('19/11/2027', 'Bercy');
 
-        $this->assertFalse($albert->isNotified());
+        // Albert et Michelle notifiés de la nouvelle date de concert car ils sont attachés à l'objet MusicBand
+        $this->assertTrue($albert->isNotified());
         $this->assertTrue($michelle->isNotified());
-        $this->assertTrue($yves->isNotified());
+        // Yves n'est pas notifié car il a été détaché de l'objet MusicBand
+        $this->assertFalse($yves->isNotified());
     }
-
 }
